@@ -1,0 +1,15 @@
+Entrez le mot de passe du fichier de clés : mainmain
+Quels sont vos nom et prénom ?
+  [Unknown]:  extia
+Quel est le nom de votre unité organisationnelle ?
+  [Unknown]:  extia
+Quel est le nom de votre entreprise ?
+  [Unknown]:  extia
+Quel est le nom de votre ville de résidence ?
+  [Unknown]:  sevres
+Quel est le nom de votre état ou province ?
+  [Unknown]:  ile-de-france
+Quel est le code pays à deux lettres pour cette unité ?
+  [Unknown]:  fr
+Est-ce CN=extia, OU=extia, O=extia, L=sevres, ST=ile-de-france, C=fr ?
+  [non]: oui
