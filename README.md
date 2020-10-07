@@ -9,6 +9,7 @@ Application mobile Main Main pour l'association La Parole aux sourds
 - [Lancement](#Lancement)
 - [Fonctionnement](#Fonctionnement)
 - [Déploiement](#Déploiement)
+- [Besoins](#Besoins)
 
 ## Technologies
 
@@ -44,3 +45,7 @@ Le déploiement peut se faire par la génération:
 - de bundle signé à l'aide de la commande `$ ./gradlew bundleRelease` en étant positioné dans le dossier 'MainMain/android. L'apk sera généré dans le dossier 'MainMain/android/app/build/outputs/bundle/release'
 
 NB: Les informations pour la signature de l'apk se trouve dans le dossier Keytool à la racine du projet
+
+## Besoins
+
+- Le logo pour générer l'icone de l'application
