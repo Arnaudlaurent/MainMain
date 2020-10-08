@@ -1,14 +1,12 @@
-import React from 'react';
-import {Text, View, Image, FlatList, Dimensions} from 'react-native';
-import stories from '../Utils/Stories'
-import StoryItem from './StoryItem'
-import Carousel, {Pagination} from 'react-native-snap-carousel';
+import React from "react";
+import { Text, View, Image, FlatList, Dimensions } from "react-native";
+import stories from "../Utils/Stories";
+import StoryItem from "./StoryItem";
+import Carousel, { Pagination } from "react-native-snap-carousel";
 
-const {width: screenWidth} = Dimensions.get('window')
-
+const { width: screenWidth } = Dimensions.get("window");
 
 class StoryList extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -35,43 +33,51 @@ class StoryList extends React.Component {
           title: "Item 5",
           text: "Text 5",
         },
-      ]
-    }
+      ],
+    };
   }
 
   _renderItem = () => {
     return (
-      <View style={{
-        backgroundColor: 'white',
-        borderRadius: 0,
-        height: screenWidth - 190,
-        width: screenWidth - 200,
-        padding: 0,
-        marginLeft: 0,
-        marginRight: 0,
-      }}>
-
-        <Image style={styles.image} source={require('../assets/histoire_sorcière.jpg')} />
+      <View
+        style={{
+          backgroundColor: "white",
+          borderRadius: 0,
+          height: screenWidth - 190,
+          width: screenWidth - 200,
+          padding: 0,
+          marginLeft: 0,
+          marginRight: 0,
+        }}
+      >
+        <Image
+          style={styles.image}
+          source={require("../assets/histoire_sorcière.jpg")}
+        />
       </View>
     );
-  }
+  };
 
   get pagination() {
-    const {activeIndex} = this.state;
+    const { activeIndex } = this.state;
     return (
       <Pagination
         dotsLength={5}
         activeDotIndex={activeIndex}
-        containerStyle={{backgroundColor: 'white', marginBottom: -20, marginTop: 0}}
+        containerStyle={{
+          backgroundColor: "white",
+          marginBottom: -20,
+          marginTop: 0,
+        }}
         dotStyle={{
           width: 10,
           height: 10,
           borderRadius: 5,
           marginHorizontal: 8,
-          backgroundColor: 'purple'
+          backgroundColor: "purple",
         }}
         inactiveDotStyle={{
-          backgroundColor: 'red'
+          backgroundColor: "red",
         }}
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
@@ -80,63 +86,87 @@ class StoryList extends React.Component {
   }
 
   _displayDetailForStory = (story) => {
-    this.props.navigation.navigate('StoryDetail', {item: story})
-  }
+    this.props.navigation.navigate("StoryDetail", { item: story });
+  };
+
+  renderSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          backgroundColor: "#caaffe",
+        }}
+      />
+    );
+  };
 
   render() {
     return (
-      <View style={{backgroundColor: 'white', marginBottom: 10, padding: 0, marginTop: 5}}>
-        <View style={{justifyContent: 'center', marginTop: 10, marginLeft: 0}}>
+      <View
+        style={{
+          backgroundColor: "white",
+          marginBottom: 10,
+          padding: 0,
+          marginTop: 5,
+        }}
+      >
+        <View
+          style={{ justifyContent: "center", marginTop: 10, marginLeft: 0 }}
+        >
           <Carousel
-            ref={ref => this.carousel = ref}
+            ref={(ref) => (this.carousel = ref)}
             data={this.state.carouselItems}
             renderItem={this._renderItem}
             sliderWidth={screenWidth}
             sliderHeight={screenWidth - 60}
             itemWidth={screenWidth - 80}
-            onSnapToItem={index => this.setState({activeIndex: index})}
+            onSnapToItem={(index) => this.setState({ activeIndex: index })}
             useScrollView={true}
           />
           {this.pagination}
         </View>
 
         <View>
-          <Text style={{
-            fontSize: 35,
-            justifyContent: 'center',
-            fontWeight: '700',
-            marginLeft: 20,
-            marginBottom: 10,
-            marginTop: 0
-          }}>Vos histoires </Text>
+          <Text
+            style={{
+              fontSize: 35,
+              justifyContent: "center",
+              fontWeight: "700",
+              marginLeft: 20,
+              marginBottom: 10,
+              marginTop: 0,
+            }}
+          >
+            Vos histoires{" "}
+          </Text>
         </View>
 
-
         <FlatList
-          ItemSeparatorComponent={({item}) =>
-            <View style={{backgroundColor: 'gray', height: 0, marginLeft: 8, marginRight: 8, padding: 0}}/>
-          }
+          ItemSeparatorComponent={this.renderSeparator}
           data={stories}
           keyExtractor={(item) => item.title}
-          renderItem={
-            ({item}) => <StoryItem story={item} displayDetailForStory={this._displayDetailForStory}
-          />}/>
+          renderItem={({ item }) => (
+            <StoryItem
+              story={item}
+              displayDetailForStory={this._displayDetailForStory}
+            />
+          )}
+        />
       </View>
-
-    )
+    );
   }
 }
 
 const styles = {
   card: {
-    flexDirection: 'column',
-    borderStyle: 'solid',
-    borderColor: 'gray',
-    borderWidth: 'thin',
-    margin: 5
+    flexDirection: "column",
+    borderStyle: "solid",
+    borderColor: "gray",
+    borderWidth: "thin",
+    margin: 5,
   },
   storyItem: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   image: {
     flex: 1,
@@ -144,25 +174,25 @@ const styles = {
     height: 250,
 
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderRadius: 20,
-    justifyContent: 'center'
+    justifyContent: "center",
   },
   description: {
     flex: 3,
-    flexDirection: 'column'
+    flexDirection: "column",
   },
   title: {
     flex: 1,
-    alignContent: 'center',
-    fontWeight: 'bold'
+    alignContent: "center",
+    fontWeight: "bold",
   },
   abstract: {
-    flex: 4
+    flex: 4,
   },
   text: {
-    fontSize: 20
-  }
-}
+    fontSize: 20,
+  },
+};
 
 export default StoryList;
