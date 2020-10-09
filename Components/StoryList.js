@@ -85,8 +85,11 @@ class StoryList extends React.Component {
     );
   }
 
-  _displayDetailForStory = (story) => {
-    this.props.navigation.navigate("StoryDetail", { item: story });
+  _displayDetailForStory = (story, index) => {
+    this.props.navigation.navigate("StoryDetail", {
+      item: story,
+      index: index,
+    });
   };
 
   renderSeparator = () => {
@@ -145,9 +148,10 @@ class StoryList extends React.Component {
           ItemSeparatorComponent={this.renderSeparator}
           data={stories}
           keyExtractor={(item) => item.title}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <StoryItem
               story={item}
+              index={index}
               displayDetailForStory={this._displayDetailForStory}
             />
           )}

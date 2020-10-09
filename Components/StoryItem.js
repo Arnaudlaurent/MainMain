@@ -11,13 +11,13 @@ class StoryItem extends React.Component {
   }
 
   render() {
-    const { story, displayDetailForStory } = this.props;
+    const { story, displayDetailForStory, index } = this.props;
 
     return (
       <>
         <View style={styles.main_Container}>
           <TouchableWithoutFeedback
-            onPress={() => displayDetailForStory(story)}
+            onPress={() => displayDetailForStory(story, index)}
           >
             <Image
               source={require("../assets/histoire_sorcière.jpg")}
@@ -29,10 +29,9 @@ class StoryItem extends React.Component {
             <View style={styles.header_container}>
               <Text
                 style={styles.title}
-                onPress={() => displayDetailForStory(story)}
+                onPress={() => displayDetailForStory(story, index)}
               >
-                {" "}
-                {story.title}{" "}
+                {story.title}
               </Text>
               <View style={styles.fav}>
                 <Icon
@@ -53,7 +52,7 @@ class StoryItem extends React.Component {
 
             <View style={styles.description_container}>
               <TouchableWithoutFeedback
-                onPress={() => displayDetailForStory(story)}
+                onPress={() => displayDetailForStory(story, index)}
               >
                 <Text style={styles.description_text} numberOfLines={3}>
                   {story.description}{" "}
